@@ -19,6 +19,7 @@ import { RatingSlider } from '../../components/RatingSlider/RatingSlider';
 
 // UTILITIES
 import { filterByRating, filterByGenre } from '../../utilities/filtering';
+import { sortMoviesBy } from '../../utilities/sort';
 
 // TYPES
 type Props = {
@@ -57,18 +58,21 @@ class App extends React.Component<Props, State> {
 
   componentWillReceiveProps(nextProps: Props): void {
 
-    // initial movie load from the api
-    // this allows all movies to show initially
+    // Initial movie load from the api
+    // this allows all movies to show initially.
+
+    // The movies are passed finally to the sorting function 
+    // to sort by popularity high to low.
     if( !this.state.moviesLoaded &&  nextProps.movies.values.length > 0) {
       this.setState({ 
-        moviesFiltered: nextProps.movies.values,
+        moviesFiltered: sortMoviesBy(nextProps.movies.values, 'popularity'),
         moviesLoaded: true
       })
     }
 
-    // check if we have a change in minimum rating or genre filters
+    // Check if we have a change in minimum rating or genre filters
     // if we do we will use the util functions to augment the array
-    // of movies displayed. This is held in the App components state object
+    // of movies displayed. This is held in the App components state object.
     if(nextProps.minimumRating !== this.props.minimumRating
       || nextProps.genreFilters.length !== this.props.genreFilters.length) {
 
@@ -78,7 +82,9 @@ class App extends React.Component<Props, State> {
         let _filteredByGenre 
           = filterByGenre( _filteredByRating, nextProps.genreFilters );
 
-        this.setState({ moviesFiltered: _filteredByGenre })
+        this.setState({ 
+          moviesFiltered: sortMoviesBy(_filteredByGenre, 'popularity')
+        })
       }
 
   }
@@ -111,11 +117,22 @@ class App extends React.Component<Props, State> {
     let _ratingSlider: React.Element<'div'>
       = <RatingSlider onChange={this.handleRatingSliderChange}/>
 
+    let _content: React.Element<'div' | 'h1'>
+      = movies.resolved && !movies.pending && !movies.error
+        ? <div>
+            <h1>Movie Listings Challenge</h1>
+            <h3>Genre Selection</h3>
+            { _genreSelector }
+            <h3>Minimum Rating</h3>
+            { _ratingSlider }
+            <h3>Movie Results</h3>
+            { _movies }
+          </div>
+        : <h1> Loading movies... </h1>;
+
     return (
       <div className={`App`}>
-        { _genreSelector }
-        { _ratingSlider }
-        { _movies }
+        { _content }
       </div>
     );
   }

@@ -5,15 +5,6 @@ import * as React from "react";
 // REDUX
 import type { Movie as MovieType} from '../../views/App/App.types';
 
-// COMPONENTS
-// ........
-
-// ASSETS
-// ........
-
-// UTILITIES
-// ........
-
 // TYPES
 type Props = {
   movies: Array<Movie>
@@ -57,6 +48,7 @@ export class Movie extends React.Component<Props, State> {
       overview,
       vote_average,
       genres,
+      popularity,
       poster_path } = this.props.movie;
 
     const { animateClass } = this.state;
@@ -77,12 +69,18 @@ export class Movie extends React.Component<Props, State> {
           }
         </div>
 
+    let _review: React.Element<'div'> 
+      = <div className={`Movie__review`}>
+          <p>Rating - { vote_average }</p>
+          <p>Popularity - { Math.round(popularity) }</p>
+        </div>
+
     let _details: React.Element<'div'> 
       = <div className={`Movie__details`}>
           <h2>{ title }</h2>
           <p>{ overview }</p>
           { _genres }
-          <p>Rating - { vote_average }</p>
+          { _review }
         </div>
 
     // FINAL RENDERED JSX

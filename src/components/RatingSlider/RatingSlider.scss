@@ -1,5 +1,4 @@
 .RatingSlider {
-  // mobile first < 425px
 
   &.--animate {}
 
@@ -10,4 +9,9 @@
   @media (min-width: 1024px) {}
 
   @media (min-width: 1440px) {}
+}
+
+
+.rc-slider {
+  margin-bottom: 3rem;
 }

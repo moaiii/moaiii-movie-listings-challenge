@@ -16,7 +16,10 @@ body {
 
 .App {
   max-width: 800px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 2rem; }
+  .App h1 {
+    margin-bottom: 1rem; }
 
 .Movie:nth-of-type(1) {
   transition-delay: 0.1s !important; }
@@ -4846,6 +4849,11 @@ body {
   padding: 0 1rem;
   align-content: flex-start;
   justify-content: space-between; }
+  .Movie__details > p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden; }
 
 .Movie__poster {
   height: 100%; }
@@ -4855,6 +4863,11 @@ body {
   .Movie__genres p {
     margin-right: 1rem;
     font-weight: bold; }
+
+.Movie__review {
+  display: flex; }
+  .Movie__review p {
+    margin-right: 1rem; }
 
 .GenreSelector {
   display: flex;
@@ -4895,3 +4908,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.rc-slider {
+  margin-bottom: 3rem; }

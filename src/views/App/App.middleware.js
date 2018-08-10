@@ -26,24 +26,24 @@ export default {
       _totalPages = res.data.total_pages;
       _movies = res.data.results;
       
-      // susequent requests to get page 2 > totalnumofpages
-      for(let i=2; i <= _totalPages; i++) {
+      // // susequent requests to get page 2 > totalnumofpages
+      // for(let i=2; i <= _totalPages; i++) {
         
-        try {
-          let res = await networkRequest({
-            method: 'get',
-            url: `${ _url }&page=${ i }`
-          });
+      //   try {
+      //     let res = await networkRequest({
+      //       method: 'get',
+      //       url: `${ _url }&page=${ i }`
+      //     });
 
-          // map the results and push each movie to the array in 
-          // in order to keep a one dimensional array for the component to use
-          res.data.results.map( movie => _movies.push( movie ));
+      //     // map the results and push each movie to the array in 
+      //     // in order to keep a one dimensional array for the component to use
+      //     res.data.results.map( movie => _movies.push( movie ));
 
-        } catch (error) {
-          console.error(`[ERROR] getting page ${ i }`, error);
-          store.dispatch(actions.getMoviesNowPlaying.rejected());
-        }
-      }
+      //   } catch (error) {
+      //     console.error(`[ERROR] getting page ${ i }`, error);
+      //     store.dispatch(actions.getMoviesNowPlaying.rejected());
+      //   }
+      // }
 
       // remap the genre id to show the name instead for UI purposes
       // we could match the ID's when filtering the arrays but I want to show
@@ -61,6 +61,7 @@ export default {
     }
   },
 
+  
   "[APP] GET_MOVIE_GENRES__SUBMIT": async (store, next, action: Action<string>) => {
     let _url: string = `${process.env.REACT_APP_GENRE_URL}${process.env.REACT_APP_API_KEY}`;
     
