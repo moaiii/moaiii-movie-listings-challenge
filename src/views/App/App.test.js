@@ -10,20 +10,18 @@ describe('setMinimumRating App action', () => {
   })
 });
 
-describe('getMovieGenres App action', () => {
-  it('gets an array of genresfrom the server', async () => {
+describe('setGenreFilters App action', () => {
+  it('correctly sets the value in the store', async () => {
     expect.assertions(1);
-    await store.dispatch(actions.getMovieGenres.submit());
-    let _genres = store.getState().AppReducer.genres.values
-    expect( _genres.length ).toBeGreaterThan( 0 );
+    await store.dispatch(actions.setGenreFilters( ['Comedy'] ));
+    let _genres = store.getState().AppReducer.genreFilters;
+    expect( _genres.length ).toEqual( 1 );
   })
-});
-
-describe('getMoviesNowPlaying App action', () => {
-  it('gets an array of movies from the server', async () => {
+  
+  it('correctly sets the multiple valuesvalue in the store', async () => {
     expect.assertions(1);
-    await store.dispatch(actions.getMoviesNowPlaying.submit());
-    let _movies = store.getState().AppReducer.movies.values
-    expect( _movies.length ).toBeGreaterThan( 0 );
+    await store.dispatch(actions.setGenreFilters( ['Comedy', 'Action'] ));
+    let _genres = store.getState().AppReducer.genreFilters;
+    expect( _genres.length ).toEqual( 2 );
   })
 });

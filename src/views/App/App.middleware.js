@@ -5,6 +5,10 @@ import type {Action} from "../../utilities/redux";
 import {networkRequest} from "../../utilities/networkRequest";
 import { remapGenres } from '../../utilities/genres.js';
 
+var path = require('path');
+var lib = path.join(path.dirname(require.resolve('axios')),'lib/adapters/http');
+var http = require(lib);
+
 export default {
   "[APP] GET_MOVIES_NOW_PLAYING__SUBMIT": async (store, next, action: Action<string>) => {
 
@@ -19,6 +23,7 @@ export default {
     // initial request for page 1
     try {
       let res = await networkRequest({
+        adapter: http,
         method: 'get',
         url: `${ _url }&page=1`
       });
@@ -64,9 +69,10 @@ export default {
   
   "[APP] GET_MOVIE_GENRES__SUBMIT": async (store, next, action: Action<string>) => {
     let _url: string = `${process.env.REACT_APP_GENRE_URL}${process.env.REACT_APP_API_KEY}`;
-    
+
     try {
       let res = await networkRequest({
+        adapter: http,
         method: 'get',
         url: `${ _url }`
       });

@@ -18,7 +18,9 @@ The project is split into modular components.
 ### Tests 
 I have tested the utility functions and reducer actions as these are all written in a functional fashion. The app is built so that changes can only occur in the UI based on changes in the store. It is therefore my assumption that we should focus on testing what changes. Testing the redux store gives us good bang for our buck. 
 
-If I had more time, I woud test the UI with a headless browser such as puppeteer. I find this more useful that Enzyme for example in asserting components on the page are rendinging correctly.
+If I had more time, I woud test the UI with a headless browser such as puppeteer. I find this more useful that Enzyme for example in asserting components on the page are rendering correctly.
+
+`npm run test` to run tests
 
 ### Styling
 All components have their own SCSS files to keep style logic modular. I have added two additional node script commands to watch and rebuild css on changes. The SASS is fairly sparse as the focus was on project approach though I have tried to demonstate where possible use of the advanced features such as selectors, ::after tricks, and SASS loops. 

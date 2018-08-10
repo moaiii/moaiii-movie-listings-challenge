@@ -86,7 +86,6 @@ class App extends React.Component<Props, State> {
           moviesFiltered: sortMoviesBy(_filteredByGenre, 'popularity')
         })
       }
-
   }
 
   setSelectedGenre = ( genres: Array<string> ): void => {
