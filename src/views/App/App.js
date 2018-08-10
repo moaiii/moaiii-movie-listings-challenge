@@ -10,7 +10,7 @@ import {
   setMinimumRating,
   setGenreFilters } from './App.action';
 import { connect } from "react-redux";
-import type { movies } from './App.types';
+import type { Movie as MovieType } from './App.types';
 
 // COMPONENTS
 import { Movie } from '../../components/Movie/Movie';
@@ -23,7 +23,7 @@ import { sortMoviesBy } from '../../utilities/sort';
 
 // TYPES
 type Props = {
-  movies: Array<Movies>,
+  movies: Array<MovieType>,
   genres: Array<Genre>
 };
 

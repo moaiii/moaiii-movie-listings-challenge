@@ -3,8 +3,8 @@ import type { Movie } from '../views/App/App.types';
 
 var sortBy = require('lodash.sortby');
 
-export const sortMoviesBy = (movies: Array<Movies>, 
-  sortByKey: string): Array<Movies> => {
+export const sortMoviesBy = (movies: Array<Movie>, 
+  sortByKey: string): Array<Movie> => {
 
     return sortBy(movies, [sortByKey]).reverse();
 }

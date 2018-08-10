@@ -68,9 +68,7 @@ export class GenreSelector extends React.Component<Props, State> {
 
   render(): React.Element<"div"> {
     // VARIABLES
-    const {  
-      options,
-      onSelect } = this.props;
+    const { options} = this.props;
 
     const { animateClass, selected } = this.state;
 

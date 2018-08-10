@@ -5,10 +5,6 @@ import type {Action} from "../../utilities/redux";
 import {networkRequest} from "../../utilities/networkRequest";
 import { remapGenres } from '../../utilities/genres.js';
 
-var path = require('path');
-var lib = path.join(path.dirname(require.resolve('axios')),'lib/adapters/http');
-var http = require(lib);
-
 export default {
   "[APP] GET_MOVIES_NOW_PLAYING__SUBMIT": async (store, next, action: Action<string>) => {
 
@@ -23,7 +19,6 @@ export default {
     // initial request for page 1
     try {
       let res = await networkRequest({
-        adapter: http,
         method: 'get',
         url: `${ _url }&page=1`
       });
@@ -31,24 +26,24 @@ export default {
       _totalPages = res.data.total_pages;
       _movies = res.data.results;
       
-      // // susequent requests to get page 2 > totalnumofpages
-      // for(let i=2; i <= _totalPages; i++) {
+      // susequent requests to get page 2 > totalnumofpages
+      for(let i=2; i <= _totalPages; i++) {
         
-      //   try {
-      //     let res = await networkRequest({
-      //       method: 'get',
-      //       url: `${ _url }&page=${ i }`
-      //     });
+        try {
+          let res = await networkRequest({
+            method: 'get',
+            url: `${ _url }&page=${ i }`
+          });
 
-      //     // map the results and push each movie to the array in 
-      //     // in order to keep a one dimensional array for the component to use
-      //     res.data.results.map( movie => _movies.push( movie ));
+          // map the results and push each movie to the array in 
+          // in order to keep a one dimensional array for the component to use
+          res.data.results.map( movie => _movies.push( movie ));
 
-      //   } catch (error) {
-      //     console.error(`[ERROR] getting page ${ i }`, error);
-      //     store.dispatch(actions.getMoviesNowPlaying.rejected());
-      //   }
-      // }
+        } catch (error) {
+          console.error(`[ERROR] getting page ${ i }`, error);
+          store.dispatch(actions.getMoviesNowPlaying.rejected());
+        }
+      }
 
       // remap the genre id to show the name instead for UI purposes
       // we could match the ID's when filtering the arrays but I want to show
@@ -72,7 +67,6 @@ export default {
 
     try {
       let res = await networkRequest({
-        adapter: http,
         method: 'get',
         url: `${ _url }`
       });

@@ -1,7 +1,7 @@
 // @flow
 // NODE MODULES
 import * as React from "react";
-import Slider, { Range } from 'rc-slider/lib/Slider';
+import Slider from 'rc-slider/lib/Slider';
 import 'rc-slider/assets/index.css';
 
 // An exmaple showing a stateless component to wrap the slider

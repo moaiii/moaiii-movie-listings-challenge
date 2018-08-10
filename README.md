@@ -5,6 +5,11 @@ The project uses React and Redux with a middleware pattern for async JS communca
 Live link
 `http://moaiii-movie-listing-challenge.s3-website-eu-west-1.amazonaws.com/#/`
 
+To run, pull the repo and run: 
+
+1. `npm i`
+2. `npm start`
+
 ### Components
 
 The project is split into modular components.

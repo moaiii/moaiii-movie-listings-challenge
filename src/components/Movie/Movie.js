@@ -7,7 +7,7 @@ import type { Movie as MovieType} from '../../views/App/App.types';
 
 // TYPES
 type Props = {
-  movies: Array<Movie>
+  movies: Array<MovieType>
 };
 
 type State = {
@@ -44,7 +44,6 @@ export class Movie extends React.Component<Props, State> {
 
     const { 
       title,
-      release_date,
       overview,
       vote_average,
       genres,
