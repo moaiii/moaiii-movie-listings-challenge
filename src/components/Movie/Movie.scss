@@ -1,0 +1,60 @@
+@for $i from 1 through 1600 {
+  .Movie {
+    &:nth-of-type(#{$i}) {
+      transition-delay: #{$i / 10}s !important;
+    }
+  }
+}
+
+.Movie {
+  height: 250px;
+  display: flex;
+  margin: 2rem 1rem;
+  padding: 1rem;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+
+  &::after {
+    content: "";
+    width: 75%;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+    opacity: 0.3;
+    background-color: grey;
+  }
+
+  &.--animate {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+  }
+
+  @media (min-width: 425px) {}
+  @media (min-width: 768px) {}
+  @media (min-width: 1024px) {}
+  @media (min-width: 1440px) {}
+}
+
+.Movie__details {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  align-content: flex-start;
+  justify-content: space-between;
+}
+
+.Movie__poster {
+  height: 100%;
+}
+
+.Movie__genres {
+  display: flex;
+
+  p {
+    margin-right: 1rem;
+    font-weight: bold;
+  }
+}

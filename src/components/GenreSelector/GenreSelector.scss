@@ -1,0 +1,54 @@
+.GenreSelector {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  &.--animate {}
+
+  @media (min-width: 425px) {}
+  @media (min-width: 768px) {}
+  @media (min-width: 1024px) {}
+  @media (min-width: 1440px) {}
+}
+
+.GenreSelector__selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 1rem;
+  cursor: pointer;
+
+  &:last-of-type {
+    margin-right: 0rem;
+  }
+}
+
+.GenreSelector__label {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #262e37;
+}
+
+.GenreSelector__box {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  border: 1px solid black;
+  margin: 0.5rem;
+}
+
+.GenreSelector__icon {
+  position: absolute;
+  top: -50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // transform: scale(1.8) translateY(-2px) translateX(1px);
+}

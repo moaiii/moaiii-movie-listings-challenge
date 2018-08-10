@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1,h2,h3,p {
+  opacity: 0.9;
+}
+
+button, a {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+body {
+  filter: saturate(1.1);
+}
+
+@mixin laptop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 425px) {
+    @content;
+  }
+}
+@import "../views/App/App.scss";
+@import "../components/Movie/Movie.scss";
+@import "../components/GenreSelector/GenreSelector.scss";
+@import "../components/RatingSlider/RatingSlider.scss";

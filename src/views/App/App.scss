@@ -1,0 +1,14 @@
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &.--animate {}
+
+  @media (min-width: 425px) {}
+
+  @media (min-width: 768px) {}
+
+  @media (min-width: 1024px) {}
+
+  @media (min-width: 1440px) {}
+}
