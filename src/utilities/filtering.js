@@ -48,12 +48,12 @@ export const filterByRating = ( movies: Array<Movie>,
     }
 }
 
-
+// util function taken from MDN. For use by the genre filter only
 function isSuperset(set, subset) {
   for (var elem of subset) {
-      if (!set.has(elem)) {
-          return false;
-      }
+    if (!set.has(elem)) {
+      return false;
+    }
   }
   return true;
 }
