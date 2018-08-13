@@ -8,12 +8,12 @@ import * as React from "react";
 // TYPES
 type Props = {
   options: Array<{
-    displayName: string,
-    name: string,
-    metadata: string,
-    icon: string,
-    color: string,
-    disabled: boolean
+    displayName?: ?string,
+    name?: ?string,
+    metadata?: ?string,
+    icon?: ?string,
+    color?: ?string,
+    disabled?: ?boolean
   }>,
   selected: Array<string>,
   onSelect: Function,

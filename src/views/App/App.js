@@ -120,11 +120,11 @@ class App extends React.Component<Props, State> {
     let _genreSelector: React.Element<typeof GenreSelector>
       = <GenreSelector
           classMod={'--App'}
-          options={genres.values}
+          options={ genres.values }
           selected={[]}
           onSelect={( genre ) => this.setSelectedGenre( genre )} />
 
-    let _ratingSlider: React.Element<typeof RatingSlider>
+    let _ratingSlider: React.Element<typeof RatingSlider> // $FlowFixMe
       = <RatingSlider onChange={this.handleRatingSliderChange}/>
 
     let _content: React.Element<'div' | 'h1'>
