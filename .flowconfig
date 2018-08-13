@@ -1,0 +1,14 @@
+
+[ignore]
+.*/node_modules/.*
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+esporposal.optional_chaining=true
+
+[strict]
