@@ -117,7 +117,7 @@ class App extends React.Component<Props, State> {
         return <Movie key={`${i}-movie`} movie={movie} />
       });
 
-    let _genreSelector: React.Element<typeof GenreSelector>
+    let _genreSelector: React.Element<typeof GenreSelector> // $FlowFixMe
       = <GenreSelector
           classMod={'--App'}
           options={ genres.values }
