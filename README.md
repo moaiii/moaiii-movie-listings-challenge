@@ -21,7 +21,7 @@ The project is split into modular components.
 - The GenreSelector component is a series of checkboxes which have been created from scratch. I wanted to demonstrate ability creating a common component in this way. Sometimes we need to have complete flexibility with our UI components are breaking away from the standard HTML elements is sometimes required. 
 
 ### Tests 
-I have tested the utility functions and reducer actions as these are all written in a functional fashion. The app is built so that changes can only occur in the UI based on changes in the store. It is therefore my assumption that we should focus on testing what changes. Testing the redux store gives us good bang for our buck. 
+I have tested the utility functions (i.e. business logic) and reducer actions as these are all written in a functional fashion. The app is built so that changes can only occur in the UI based on changes in the store. It is therefore my assumption that we should focus on testing what changes. Testing the redux store gives us good bang for our buck. 
 
 If I had more time, I woud test the UI with a headless browser such as puppeteer. I find this more useful that Enzyme for example in asserting components on the page are rendering correctly.
 

@@ -34,9 +34,6 @@ describe('Filtering the movies list by genre', () => {
 });
 
 describe('Filtering the movies list by rating', () => {
-  it('should return unfiltered if 11 is set as the rating', () => {
-  })
-
   it('should not return a movie with rating lower than specified (e.g. 8)', () => {
     let _filteredMovies = filterByRating(movies, 8);
 
@@ -48,6 +45,5 @@ describe('Filtering the movies list by rating', () => {
   it('should return the array unfiltered if the range is out of bounds (13, -1)', () => {
     expect(filterByRating(movies, -1)).toHaveLength( movies.length );
     expect(filterByRating(movies, 13)).toHaveLength( movies.length );
-
   })
 })
