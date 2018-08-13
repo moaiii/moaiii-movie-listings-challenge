@@ -9,6 +9,5 @@
 [lints]
 
 [options]
-esporposal.optional_chaining=true
 
 [strict]

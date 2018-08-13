@@ -1,4 +1,3 @@
-// @flow
 import {remapGenres} from '../utilities/genres';
 
 import genres from './mockData/genres-api.json';

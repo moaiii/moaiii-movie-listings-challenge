@@ -3,7 +3,7 @@ import type { Movie, Genre } from './App.types';
 
 type Action = {
   +type: string,
-  +payload: Object
+  +payload: any
  };
 
 type State = {

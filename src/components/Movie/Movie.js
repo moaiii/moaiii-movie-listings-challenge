@@ -7,7 +7,7 @@ import type { Movie as MovieType} from '../../views/App/App.types';
 
 // TYPES
 type Props = {
-  movies: Array<MovieType>
+  movie: Array<MovieType>
 };
 
 type State = {
@@ -56,7 +56,7 @@ export class Movie extends React.Component<Props, State> {
 
     let _poster: React.Element<'img'> 
       = <img 
-          className={`Movie__poster`}
+          className={`Movie__poster`} // $FlowFixMe
           src={`${ process.env.REACT_APP_POSTER_URL}${poster_path}`}
           alt={`Movie-${ title }`} />
 

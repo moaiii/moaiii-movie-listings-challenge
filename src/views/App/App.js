@@ -8,9 +8,9 @@ import {
   getMoviesNowPlaying, 
   getMovieGenres,
   setMinimumRating,
-  setGenreFilters } from './App.action';
+  setGenreFilters } from './App.action'; // $FlowFixMe
 import { connect } from "react-redux";
-import type { Movie as MovieType } from './App.types';
+import type { Movie as MovieType, Genre } from './App.types';
 
 // COMPONENTS
 import { Movie } from '../../components/Movie/Movie';
@@ -23,11 +23,20 @@ import { sortMoviesBy } from '../../utilities/sort';
 
 // TYPES
 type Props = {
-  movies: Array<MovieType>,
-  genres: Array<Genre>
+  movies: {
+    values: Array<MovieType>,
+    pending: boolean,
+    resolved: boolean,
+    error: boolean
+  },
+  genres: Array<Genre>,
+  minimumRating: number,
+  genreFilters: Array<string>
 };
 
 type State = {
+  moviesLoaded: boolean,
+  moviesFiltered: Array<MovieType>,
   animateClass: string
 };
 
@@ -37,6 +46,7 @@ class App extends React.Component<Props, State> {
     super();
 
     this.state = {
+      animateClass: '',
       moviesFiltered: [],
       moviesLoaded: false
     };
@@ -44,7 +54,7 @@ class App extends React.Component<Props, State> {
 
   // CLASS FUNCTIONS
 
-  async componentDidMount(): void {
+  async componentDidMount(): Promise<any> {
     // call the TMDB api and load genre list and movies into the redux store
 
     // if we had routes and the app component had the potential to be mounted 
@@ -102,18 +112,19 @@ class App extends React.Component<Props, State> {
     const { moviesFiltered } = this.state;
 
     // private components
-    let _movies: Array<React.Element<'div'>> 
+    let _movies: Array<React.Element<typeof Movie>> 
       = moviesFiltered.map( (movie, i) => {
         return <Movie key={`${i}-movie`} movie={movie} />
       });
 
-    let _genreSelector: React.Element<'div'>
+    let _genreSelector: React.Element<typeof GenreSelector>
       = <GenreSelector
+          classMod={'--App'}
           options={genres.values}
           selected={[]}
           onSelect={( genre ) => this.setSelectedGenre( genre )} />
 
-    let _ratingSlider: React.Element<'div'>
+    let _ratingSlider: React.Element<typeof RatingSlider>
       = <RatingSlider onChange={this.handleRatingSliderChange}/>
 
     let _content: React.Element<'div' | 'h1'>

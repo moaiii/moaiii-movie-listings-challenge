@@ -9,6 +9,7 @@ import * as React from "react";
 type Props = {
   options: Array<{
     displayName: string,
+    name: string,
     metadata: string,
     icon: string,
     color: string,
@@ -16,7 +17,7 @@ type Props = {
   }>,
   selected: Array<string>,
   onSelect: Function,
-  classMod: string
+  classMod?: ?string
 }
 
 type State = {

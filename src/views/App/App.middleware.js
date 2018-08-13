@@ -6,10 +6,11 @@ import {networkRequest} from "../../utilities/networkRequest";
 import { remapGenres } from '../../utilities/genres.js';
 
 export default {
-  "[APP] GET_MOVIES_NOW_PLAYING__SUBMIT": async (store, next, action: Action<string>) => {
+  "[APP] GET_MOVIES_NOW_PLAYING__SUBMIT": async (store: Object, next: Function, 
+    action: Action<string>) => {
 
     let _totalPages: number = 0;
-    let _movies: Array<Object> = [];
+    let _movies: Array<Object> = []; // $FlowFixMe
     let _url: string = `${process.env.REACT_APP_API_BASE_URL}${process.env.REACT_APP_NOW_PLAYING_URL}${process.env.REACT_APP_API_KEY}`;
 
     // The api provides pages to allow developers to easily create pagination
@@ -62,7 +63,7 @@ export default {
   },
 
   
-  "[APP] GET_MOVIE_GENRES__SUBMIT": async (store, next, action: Action<string>) => {
+  "[APP] GET_MOVIE_GENRES__SUBMIT": async (store: Object, next: Function, action: Action<string>) => { // $FlowFixMe
     let _url: string = `${process.env.REACT_APP_GENRE_URL}${process.env.REACT_APP_API_KEY}`;
 
     try {

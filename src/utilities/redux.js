@@ -1,5 +1,5 @@
 // @flow
-
+// $FlowFixMe
 import type {ActionCreator as ReduxActionCreator} from "redux";
 
 // types
