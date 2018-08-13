@@ -7,7 +7,7 @@ import type { Movie as MovieType} from '../../views/App/App.types';
 
 // TYPES
 type Props = {
-  movie: Array<MovieType>
+  movie: MovieType
 };
 
 type State = {
