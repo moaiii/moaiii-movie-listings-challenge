@@ -1,6 +1,6 @@
 .GenreSelector {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 1rem;
   width: 100%;
   flex-wrap: wrap;
@@ -17,13 +17,17 @@
 .GenreSelector__selector {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-right: 1rem;
   cursor: pointer;
 
   &:last-of-type {
     margin-right: 0rem;
+  }
+
+  label {
+    margin-left: 0.5rem;
   }
 }
 

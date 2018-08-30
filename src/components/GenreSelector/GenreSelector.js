@@ -63,8 +63,15 @@ export class GenreSelector extends React.Component<Props, State> {
     this.setState({ 
       selected: _newSelectedArray 
     }, () => { // pass the display name
+      console.log(this.state);
       this.props.onSelect( this.state.selected );
     });
+  }
+
+  clearAll = () => {
+    this.setState({ selected: [] }, () => {
+      this.props.onSelect( this.state.selected );
+    })
   }
 
   render(): React.Element<"div"> {
@@ -82,23 +89,47 @@ export class GenreSelector extends React.Component<Props, State> {
       let _active = selected.includes(option.name);
 
       return(
-        <div className={`GenreSelector__selector`}
+        <div 
+          className={`GenreSelector__selector`}
           onClick={() => this.onSelect( option, i )}
+          onKeyDown={(e) => {if(e.keyCode === 13) this.onSelect( option, i )}}
           key={`${i}-selector`}>
-          <div className={`GenreSelector__box`}>
-            { _active ? <h1 className={`GenreSelector__icon`}>X</h1> : null }
-          </div>
-          <p className={`GenreSelector__label`}>
-            { option.name }
-          </p>
+
+          <input 
+            tabIndex={1}
+            type="checkbox" 
+            aria-checked={_active} 
+            checked={_active} 
+            id={option.name} 
+            name="feature" 
+            aria-labelledby={`label${i} genre-selection-group`}
+            value={option.name} />
+
+          <label id={`label${i}`} htmlFor={option.name}>{ option.name }</label>
+
         </div>
       )
     })
 
+    let _clearAll 
+      = <button 
+            onClick={() => this.clearAll()}
+            onKeyDown={(e) => {if(e.keyCode === 13) this.clearAll()}}
+            tabIndex={1}
+            id={`clear-all`} 
+            name="feature" 
+            aria-labelledby={`clearall1 genre-selection-group`}>
+          <p id={`clear-all`}>Clear All</p>
+      </button>
+
     // FINAL RENDERED JSX
     return (
       <div className={`GenreSelector ${ animateClass }`}>
-        { _checkBoxes }
+        <p>When tabbing through the genres, you can press enter to select an option</p>
+        <fieldset>
+          { _checkBoxes }
+          { _clearAll }
+        </fieldset>
       </div>
     );
   }

@@ -4871,7 +4871,7 @@ body {
 
 .GenreSelector {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 1rem;
   width: 100%;
   flex-wrap: wrap;
@@ -4880,12 +4880,14 @@ body {
 .GenreSelector__selector {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-right: 1rem;
   cursor: pointer; }
   .GenreSelector__selector:last-of-type {
     margin-right: 0rem; }
+  .GenreSelector__selector label {
+    margin-left: 0.5rem; }
 
 .GenreSelector__label {
   text-transform: uppercase;
