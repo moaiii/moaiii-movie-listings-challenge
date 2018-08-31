@@ -45,8 +45,8 @@ For accessibility issues, I have considered a users use of assistive technology 
 
 Ive used native HTML elements together with ARIA tags to better define our elements, their roles and improve the accessibility tree by grouping elements together. I've used the lebeledBy to do this creating a 'tree' creates clearly defined map of paths whereby the user can 'tab' through and access our site. 
 
-When we consider situations of low network bandwith where the client is struggling to download the assets. In situation where the css has not downloaded, the use of native elements like input checkboxes allows us to still use the page. It might not be pretty but its functional. To mitigate this I would also consider lazy loading all the movie data rather than waiting until all 40 pages have been downloaded - this would make it more performant.
+When we consider situations of low network bandwith where the client is struggling to download the assets for example the css has not downloading, the use of native elements like input checkboxes allows us to still use the page. It might not be pretty but its functional. To mitigate this I would also consider lazy loading all the movie data rather than waiting until all 40 pages have been downloaded - this would make it more performant.
 
-I've stuck with simple black text on white background for maximum contract and readability. Elements are visually grouped to the left though no efforts have been made to improve the UI. 
+I've stuck with simple black text on white background for maximum contrast and readability. Elements are visually grouped to the left though no efforts have been made to improve the UI. 
 
-We can cycle through the options group useing tab and shift+tab, then press enter select an option. For someone who is impaired, unselecting these is highly tedious, therefore I've also supplied a clear all option. 
+We can cycle through the options group using tab and shift+tab, then press enter select an option. For someone who is impaired, unselecting these is highly tedious, therefore I've also supplied a clear all option. 
